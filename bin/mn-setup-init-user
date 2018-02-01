@@ -9,15 +9,15 @@ if [ "$#" -ne 1 ]; then
     echo "mn-setup-init-user <username>"
 fi
 
+# creating user
 user=$1-$(openssl rand -hex 5)
 adduser $user
 usermod -aG sudo $user
 
-echo $user
-echo su $user
-echo cd
-echo mkdir .ssh
-echo chmod 700 .ssh
-echo touch .ssh/authorized_keys
-echo ssh-rsa <paste your pub key here> > .ssh/authorized_keys
-echo chmod 600 .ssh/authorized_keys
+# keys
+echo updating $user authorized_keys
+sudo -u $user mkdir -p /home/$user/.ssh
+sudo -u $user chmod 700 /home/$user/.ssh
+cp /root/.ssh/authorized_keys /home/$user/.ssh/authorized_keys
+chown $user:$user /home/$user/.ssh/authorized_keys
+chmod 600 /home/$user/.ssh/authorized_keys

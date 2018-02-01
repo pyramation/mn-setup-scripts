@@ -22,3 +22,6 @@ chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
 echo $'/swapfile\tnone\tswap\tsw\t0 0' >> /etc/fstab
+
+# install fail2ban
+apt-get install fail2ban
