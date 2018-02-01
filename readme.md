@@ -33,7 +33,7 @@ export TESTNET=1
 ### generate the config
 
 ```sh
-python mn_setup/00-make-denarius-config.py
+mn-setup-init-config
 ```
 
 ### start `denariusd`
@@ -45,13 +45,13 @@ python mn_setup/00-make-denarius-config.py
 ### update `denarius.conf` with masternode info
 
 ```sh
-python mn_setup/01-update-config.py
+mn-setup-update-config
 ```
 
 ### generate `masternode.conf`
 
 ```sh
-python mn_setup/02-make-masternode-config.py
+mn-setup-init-masternode-config
 ```
 
 ### restart `denariusd`
