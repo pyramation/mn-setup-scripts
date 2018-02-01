@@ -13,7 +13,7 @@ from collections import OrderedDict
 
 DAEMON_PATH='./denariusd'
 if not os.path.isfile(DAEMON_PATH):
-      raise Exception("%s is missing" % DAEMON_PATH)
+    raise Exception("%s is missing" % DAEMON_PATH)
 
 if 'MN_ALIAS' in os.environ:
     ALIAS=os.environ['MN_ALIAS']
