@@ -74,16 +74,16 @@ export TESTNET=1
 mn-setup-init-config
 ```
 
-### 3 load up on 5000 coin!
-
-```sh
-./denariusd getaccountaddress 0
-```
-
-### 4 start `denariusd`
+### 3 start `denariusd`
 
 ```sh
 ./denariusd
+```
+
+### 4 load up on 5000 coin!
+
+```sh
+./denariusd getaccountaddress 0
 ```
 
 ### 5 update `denarius.conf` with masternode info
