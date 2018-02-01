@@ -6,7 +6,8 @@ if [ "$EUID" -ne 0 ]
 fi
 
 if [ "$#" -ne 1 ]; then
-    echo "mn-setup-init-user <username>"
+  echo "mn-setup-init-user <username>"
+  exit
 fi
 
 # creating user

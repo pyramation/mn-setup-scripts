@@ -2,12 +2,18 @@
 
 original source: https://denariustalk.org/index.php?/topic/129-dnr-masternode-setup
 
-## WARNING THIS IS IN PROGRESS
+# install
 
 ```sh
 git clone https://github.com/pyramation/mn-setup-scripts.git
 cd mn-setup-scripts && ./install.sh
+source ~/.profile
 ```
+
+
+
+
+
 
 # TODO
 
