@@ -4,6 +4,10 @@ original source: https://denariustalk.org/index.php?/topic/129-dnr-masternode-se
 
 ## WARNING THIS IS IN PROGRESS
 
+```sh
+git clone https://github.com/pyramation/mn-setup-scripts.git
+cd mn-setup-scripts && ./install.sh
+```
 
 # TODO
 
