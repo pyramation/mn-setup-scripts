@@ -134,11 +134,21 @@ If the output says “ masternode is stopped ” then run the following command:
 
 ## notes
 
-to get the alias name
+### clean your history!
+
+As an extra security precaution, in case you entered a passphrase or other sensitive information via the command line, this line will completely erase all of your bash history:
+
+```sh
+cat /dev/null > ~/.bash_history && history -c
+```
+
+### get the alias name
 
 ```sh
 cat ~/.denarius/masternode.conf
 ```
+
+### if you encrypted your wallet
 
 you may to to use `walletpassphrase` to start the alias, so far this order works:
 
