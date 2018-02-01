@@ -2,65 +2,79 @@
 
 original source: https://denariustalk.org/index.php?/topic/129-dnr-masternode-setup
 
-# install
+## initial security setup
+
+if you already have a secure box and a user, just skip right now down to section "masternode setup"
+
+### 1 install scripts and some deps
 
 ```sh
 git clone https://github.com/pyramation/mn-setup-scripts.git
 cd mn-setup-scripts && ./install.sh
 source ~/.profile
+apt-get update
+apt-get upgrade
+apt-get install ufw python virtualenv git unzip pv make
 ```
 
+### 2 change your root password
+
+```sh
+passwd root
+```
+
+### 3 add user
+
+```sh
+mn-setup-init-user <username>
+```
+
+Write down the username it creates! Added randomness for extra security.
+
+### 4 add firewalls
+
+```sh
+mn-setup-firewalls
+reboot
+```
+
+# masternode setup
 
 
+### 1 setup env vars
 
-
-
-# TODO
-
-- [x] add a flag for testnet
-- [x] move variables to env variables
-- [ ] double check assumptions w dnr devs
-- [ ] add better documention
-- [ ] try doing walletpassphrase before start-alias and see if it works
-
-# setup
-
-### go to src folder
-
-navigate to `denarius/src` where `./denariusd` lives, for now you can just run these python files from there.
-
-### setup env vars
+navigate to `denarius/src` where `./denariusd` lives, and setup env vars:
 
 ```sh
 export MN_ALIAS=pyramation
 export TESTNET=1
 ```
 
-### generate the config
+### 2 generate the config
 
 ```sh
 mn-setup-init-config
 ```
 
-### start `denariusd`
+### 3 start `denariusd`
 
 ```sh
 ./denariusd
 ```
 
-### update `denarius.conf` with masternode info
+### 4 update `denarius.conf` with masternode info
 
 ```sh
 mn-setup-update-config
 ```
 
-### generate `masternode.conf`
+### 5 generate `masternode.conf`
 
 ```sh
 mn-setup-init-masternode-config
 ```
 
-### restart `denariusd`
+### 6 restart `denariusd`
 
 In one shell,
 
@@ -74,7 +88,7 @@ then in the original one running `./denariusd`, hit `ctl+c`, then
 ./denariusd
 ```
 
-### start your masternode
+### 7 start your masternode
 
 look at the alias inside of `masternode.conf`
 
