@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit
+fi
+
+# remove ability for root login
+perl -p -i -e 's/PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config
+service ssh restart
+
+# firewall
+ufw allow ssh/tcp
+ufw allow 9999/tcp
+ufw allow 19999
+ufw logging on
+ufw enable
+
+# swap
+fallocate -l 4G /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+echo $'/swapfile\tnone\tswap\tsw\t0 0' >> /etc/fstab

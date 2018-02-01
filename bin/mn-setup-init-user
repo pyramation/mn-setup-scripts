@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit
+fi
+
+if [ "$#" -ne 1 ]; then
+    echo "mn-setup-init-user <username>"
+fi
+
+user=$1-$(openssl rand -hex 5)
+adduser $user
+usermod -aG sudo $user
+
+echo $user
+echo su $user
+echo cd
+echo mkdir .ssh
+echo chmod 700 .ssh
+echo touch .ssh/authorized_keys
+echo ssh-rsa <paste your pub key here> > .ssh/authorized_keys
+echo chmod 600 .ssh/authorized_keys
