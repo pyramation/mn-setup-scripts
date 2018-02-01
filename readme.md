@@ -6,21 +6,21 @@ original source: https://denariustalk.org/index.php?/topic/129-dnr-masternode-se
 
 if you already have a secure box and a user, just skip right now down to section "masternode setup"
 
-### 1 install scripts and some deps
-
-```sh
-git clone https://github.com/pyramation/mn-setup-scripts.git
-cd mn-setup-scripts && ./install.sh
-source ~/.profile
-apt-get update
-apt-get upgrade
-apt-get install ufw python virtualenv git unzip pv make
-```
-
-### 2 change your root password
+### 1 change your root password
 
 ```sh
 passwd root
+```
+
+### 2 install scripts and some deps
+
+```sh
+apt-get update
+apt-get upgrade
+apt-get install ufw python virtualenv git unzip pv make
+git clone https://github.com/pyramation/mn-setup-scripts.git
+cd mn-setup-scripts && ./install.sh
+source ~/.profile
 ```
 
 ### 3 add user
@@ -41,6 +41,24 @@ reboot
 # masternode setup
 
 
+### 0 install denarius
+
+as root or sudo:
+
+```
+apt-get install build-essential libssl-dev libdb++-dev libboost-all-dev libminiupnpc-dev libqrencode-dev
+```
+
+then as user:
+
+```
+git clone https://github.com/carsenk/denarius
+cd denarius
+git checkout masternodes # CAREFUL THIS STEP MAY BE DIFFERENT WHEN IN PRODUCTION!
+cd src
+make -f makefile.unix
+```
+
 ### 1 setup env vars
 
 navigate to `denarius/src` where `./denariusd` lives, and setup env vars:
@@ -56,25 +74,31 @@ export TESTNET=1
 mn-setup-init-config
 ```
 
-### 3 start `denariusd`
+### 3 load up on 5000 coin!
+
+```sh
+./denariusd getaccountaddress 0
+```
+
+### 4 start `denariusd`
 
 ```sh
 ./denariusd
 ```
 
-### 4 update `denarius.conf` with masternode info
+### 5 update `denarius.conf` with masternode info
 
 ```sh
 mn-setup-update-config
 ```
 
-### 5 generate `masternode.conf`
+### 6 generate `masternode.conf`
 
 ```sh
 mn-setup-init-masternode-config
 ```
 
-### 6 restart `denariusd`
+### 7 restart `denariusd`
 
 In one shell,
 
@@ -88,7 +112,7 @@ then in the original one running `./denariusd`, hit `ctl+c`, then
 ./denariusd
 ```
 
-### 7 start your masternode
+### 8 start your masternode
 
 look at the alias inside of `masternode.conf`
 
@@ -107,7 +131,6 @@ If the output says “ masternode is stopped ” then run the following command:
 ```sh
 ./denriusd masternode start
 ```
-
 
 ## notes
 
