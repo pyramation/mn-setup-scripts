@@ -11,6 +11,10 @@ import warnings
 import re
 from collections import OrderedDict
 
+DAEMON_PATH='./denariusd'
+if not os.path.isfile(DAEMON_PATH):
+      raise Exception("%s is missing" % DAEMON_PATH)
+
 if 'MN_ALIAS' in os.environ:
     ALIAS=os.environ['MN_ALIAS']
 else:
@@ -32,7 +36,6 @@ if 'DATADIR' in os.environ:
 else:
     DATADIR='%s/.denarius' % os.environ['HOME']
 
-DAEMON_PATH='./denariusd' # TODO assumes you are running from the src dir, please change
 MASTERCONF='%s/masternode.conf' % DATADIR
 DCONF='%s/denarius.conf' % DATADIR
 
@@ -225,4 +228,3 @@ def get_masternode_outputs():
       return json.loads(subprocess.check_output([DAEMON_PATH, "masternode","outputs"]))
     except subprocess.CalledProcessError as e:
       raise Exception( "cannot generate a masternode outputs" )
-
