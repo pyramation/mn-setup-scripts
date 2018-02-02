@@ -4,8 +4,7 @@ import subprocess
 import os
 
 def generate_initd(daemon_name, daemon, user):
-    return """
-#! /bin/sh
+    return """#! /bin/sh
 # Provides:          {daemon_name}
 # Required-Start:    $remote_fs $syslog
 
@@ -28,8 +27,7 @@ exit 0
 """.format(daemon_name=daemon_name, daemon=daemon, user=user)
 
 def generate_masternode_initd(daemon_name, daemon, user):
-    return """
-#! /bin/sh
+    return """#! /bin/sh
 # Provides:          masternode
 # Required-Start:    $remote_fs $syslog {daemon_name}
 
