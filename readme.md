@@ -69,7 +69,7 @@ mkdir -p ~/.denarius
 mn-setup-init-config
 ```
 
-or if using testnet, 
+or if using testnet,
 
 ```sh
 TESTNET=1 mn-setup-init-config
@@ -84,19 +84,7 @@ cd ~/denarius/src
 ./denariusd
 ```
 
-### 4 load up on 5000 coin!
-
-Now, open another shell, and navigate to the `src/` dir
-
-```sh
-cd ~/denarius/src
-./denariusd getaccountaddress 0
->> 8aEgCZRJcmSUymnd8mLsQqE9SfWAnGYZrB
-```
-
-Send 5000 DNR to the address it returns
-
-### 5 update `denarius.conf` with masternode info
+### 4 update `denarius.conf` with masternode info
 
 ```sh
 cd ~/denarius/src
@@ -109,7 +97,19 @@ if using testnet,
 TESTNET=1 mn-setup-update-config
 ```
 
-### 6 generate `masternode.conf`
+### 5 load up on 5000 coin!
+
+Now, open another shell, and navigate to the `src/` dir
+
+```sh
+cd ~/denarius/src
+./denariusd getaccountaddress 0
+>> 8aEgCZRJcmSUymnd8mLsQqE9SfWAnGYZrB
+```
+
+Send 5000 DNR to the address it returns
+
+### 6 wait until your funds arrive
 
 First, wait until you are sync'd and have coins!
 
@@ -118,6 +118,18 @@ cd ~/denarius/src
 ./denariusd getbalance
 >> 5000.00
 ```
+
+#### Trouble shooting:
+
+testnet: `tail -f ~/.denarius/testnet/debug.log`
+mainnet: `tail -f ~/.denarius/debug.log`
+
+if you see not a lot of action, or something like `02/02/18 02:55:31 No valid UPnP IGDs found`, then:
+```sh
+./denariusd addnode denarius.win add
+```
+
+### 7 generate `masternode.conf`
 
 When ready, generate the config:
 
@@ -131,7 +143,7 @@ or for testnet,
 MN_ALIAS=pyramation TESTNET=1 mn-setup-init-masternode-config
 ```
 
-### 7 restart `denariusd`
+### 8 restart `denariusd`
 
 In one shell,
 
@@ -145,7 +157,7 @@ then in the original one running `./denariusd`, hit `ctl+c`, then
 ./denariusd
 ```
 
-### 8 start your masternode
+### 9 start your masternode
 
 look at the alias inside of `masternode.conf`
 
