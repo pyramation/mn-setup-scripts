@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from collections import OrderedDict
-from utils.helpers import write_config, ensure_config_does_not_exist, get_random_rpcuser, get_random_rpcpassword, use_testnet
+from mn_setup_utils.helpers import write_config, ensure_config_does_not_exist, get_random_rpcuser, get_random_rpcpassword, use_testnet
 
 ensure_config_does_not_exist()
 

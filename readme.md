@@ -24,6 +24,8 @@ cd mn-setup-scripts && ./install.sh
 
 ### 3 add user
 
+make sure `/root/.ssh/authorized_keys` exists first! If you used DigitalOcean or similar, should already be there ;)
+
 ```sh
 mn-setup-init-user <username>
 ```
@@ -42,15 +44,17 @@ reboot
 
 ### 0 install denarius
 
-as root or sudo:
+Log back in, then switch to root (or can use sudo):
 
 ```
+su - root
 apt-get install build-essential libssl-dev libdb++-dev libboost-all-dev libminiupnpc-dev libqrencode-dev
 ```
 
-then as user:
+then type `exit` if root, to go back to regular user:
 
 ```
+cd ~/
 git clone https://github.com/carsenk/denarius
 cd denarius
 git checkout masternodes # CAREFUL THIS STEP MAY BE DIFFERENT WHEN IN PRODUCTION!
@@ -61,8 +65,10 @@ make -f makefile.unix
 ### 1 setup env vars
 
 navigate to `denarius/src` where `./denariusd` lives, and setup env vars:
+[comment]: <> (TODO: maybe should just use raw_input to ask user these variables...)
 
 ```sh
+cd ~/denarius/src
 export MN_ALIAS=pyramation
 export TESTNET=1
 ```
@@ -70,6 +76,7 @@ export TESTNET=1
 ### 2 generate the config
 
 ```sh
+mkdir -p ~/.denarius
 mn-setup-init-config
 ```
 
