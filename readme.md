@@ -183,6 +183,8 @@ If you receive `masternode is stopped` error, just try to start again:
 
 ### 10 init.d scripts
 
+In case of a failure, this will create a service that starts up on reboot:
+
 run as `root`
 
 ```sh
