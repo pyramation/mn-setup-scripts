@@ -181,7 +181,21 @@ If you receive `masternode is stopped` error, just try to start again:
 ./denriusd masternode start
 ```
 
-### 10 clean your history!
+### 10 init.d scripts
+
+run as `root`
+
+```sh
+mn-setup-masternode-service dnr /home/myuser-d0cf0ccc5b/denarius/src/denariusd myuser-d0cf0ccc5b
+```
+
+test it ;)
+
+```sh
+reboot now
+```
+
+### 11 clean your history!
 
 As an extra security precaution, in case you entered a passphrase or other sensitive information via the command line, this line will completely erase all of your bash history:
 
