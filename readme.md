@@ -94,7 +94,10 @@ Now, open another shell, and navigate to the `src/` dir
 ```sh
 cd ~/denarius/src
 ./denariusd getaccountaddress 0
+>> 8aEgCZRJcmSUymnd8mLsQqE9SfWAnGYZrB
 ```
+
+Send 5000 DNR to that address
 
 ### 5 update `denarius.conf` with masternode info
 
