@@ -42,7 +42,7 @@ reboot
 # masternode setup
 
 
-### 0 install denarius
+### 1 install denarius
 
 Log back in, then switch to root (or can use sudo):
 
@@ -62,23 +62,20 @@ cd src
 make -f makefile.unix
 ```
 
-### 1 setup env vars
-
-navigate to `denarius/src` where `./denariusd` lives, and setup env vars:
-[comment]: <> (TODO: maybe should just use raw_input to ask user these variables...)
-
-```sh
-cd ~/denarius/src
-export MN_ALIAS=pyramation
-export TESTNET=1
-```
-
 ### 2 generate the config
 
 ```sh
 mkdir -p ~/.denarius
 mn-setup-init-config
 ```
+
+or if using testnet, 
+
+```sh
+TESTNET=1 mn-setup-init-config
+```
+
+
 
 ### 3 start `denariusd`
 
@@ -106,6 +103,12 @@ cd ~/denarius/src
 mn-setup-update-config
 ```
 
+if using testnet,
+
+```
+TESTNET=1 mn-setup-update-config
+```
+
 ### 6 generate `masternode.conf`
 
 First, wait until you are sync'd and have coins!
@@ -120,7 +123,12 @@ When ready, generate the config:
 
 ```sh
 cd ~/denarius/src
-mn-setup-init-masternode-config
+MN_ALIAS=pyramation mn-setup-init-masternode-config
+```
+or for testnet,
+
+```sh
+MN_ALIAS=pyramation TESTNET=1 mn-setup-init-masternode-config
 ```
 
 ### 7 restart `denariusd`
