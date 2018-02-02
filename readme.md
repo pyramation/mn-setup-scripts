@@ -83,24 +83,40 @@ mn-setup-init-config
 ### 3 start `denariusd`
 
 ```sh
+cd ~/denarius/src
 ./denariusd
 ```
 
 ### 4 load up on 5000 coin!
 
+Now, open another shell, and navigate to the `src/` dir
+
 ```sh
+cd ~/denarius/src
 ./denariusd getaccountaddress 0
 ```
 
 ### 5 update `denarius.conf` with masternode info
 
 ```sh
+cd ~/denarius/src
 mn-setup-update-config
 ```
 
 ### 6 generate `masternode.conf`
 
+First, wait until you are sync'd and have coins!
+
 ```sh
+cd ~/denarius/src
+./denariusd getbalance
+>> 5000.00
+```
+
+When ready, generate the config:
+
+```sh
+cd ~/denarius/src
 mn-setup-init-masternode-config
 ```
 
