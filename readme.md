@@ -20,7 +20,6 @@ apt-get upgrade
 apt-get install ufw python virtualenv git unzip pv make
 git clone https://github.com/pyramation/mn-setup-scripts.git
 cd mn-setup-scripts && ./install.sh
-source ~/.profile
 ```
 
 ### 3 add user
