@@ -97,7 +97,7 @@ cd ~/denarius/src
 >> 8aEgCZRJcmSUymnd8mLsQqE9SfWAnGYZrB
 ```
 
-Send 5000 DNR to that address
+Send 5000 DNR to the address it returns
 
 ### 5 update `denarius.conf` with masternode info
 
