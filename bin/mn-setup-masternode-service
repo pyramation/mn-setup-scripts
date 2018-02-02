@@ -1,6 +1,21 @@
 #!/usr/bin/env python
-from collections import OrderedDict
-from mn_setup_utils.helpers import ensure_mn_config_exists, write_initd
 
-ensure_mn_config_exists()
-write_initd()
+import sys
+from mn_setup_utils.initd import generate_initd, generate_masternode_initd, write_initd_files
+from mn_setup_utils.helpers import ensure_mn_config_exists
+
+# ensure_mn_config_exists()
+print (sys.argv)
+
+if len(sys.argv) != 4:
+    raise Exception("wrong number of arguments")
+
+# daemon_name=raw_input('daemon_name, e.g. dnr.\n: ')
+# daemon=raw_input('daemon path, e.g. /home/user/denarius/src/denriusd\n: ')
+# user=raw_input('username to execute, e.g. myuser\n: ')
+
+daemon_name=sys.argv[1]
+daemon=sys.argv[2]
+user=sys.argv[3]
+
+write_initd_files(daemon_name, daemon, user)
