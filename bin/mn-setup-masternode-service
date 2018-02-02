@@ -2,7 +2,7 @@
 
 import sys
 from mn_setup_utils.initd import generate_initd, generate_masternode_initd, write_initd_files
-from mn_setup_utils.helpers import ensure_mn_config_exists
+# from mn_setup_utils.helpers import ensure_mn_config_exists
 
 # ensure_mn_config_exists()
 print (sys.argv)
