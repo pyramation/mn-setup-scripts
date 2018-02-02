@@ -160,10 +160,9 @@ then in the original one running `./denariusd`, hit `ctl+c`, then
 
 ### 9 start your masternode
 
-look at the alias inside of `masternode.conf`
 
 ```sh
- ./denariusd masternode start-alias <your alias>
+./denariusd masternode start
 ```
 
 To ensure the masternode is running properly you can use the debug command:
@@ -172,35 +171,20 @@ To ensure the masternode is running properly you can use the debug command:
 ./denariusd masternode debug
 ```
 
-If the output says “ masternode is stopped ” then run the following command:
+#### Troubleshooting
+
+If you receive `masternode input must have at least 15 confirmations` error when starting, you'll simply have to wait.
+
+If you receive `masternode is stopped` error, just try to start again:
 
 ```sh
 ./denriusd masternode start
 ```
 
-## notes
-
-### clean your history!
+### 10 clean your history!
 
 As an extra security precaution, in case you entered a passphrase or other sensitive information via the command line, this line will completely erase all of your bash history:
 
 ```sh
 cat /dev/null > ~/.bash_history && history -c
-```
-
-### get the alias name
-
-```sh
-cat ~/.denarius/masternode.conf
-```
-
-### if you encrypted your wallet
-
-you may to to use `walletpassphrase` to start the alias, so far this order works:
-
-```sh
-./denariusd masternode start-alias <aliasname>
-./denariusd walletpassphrase <passphrase> 10000000
-./denariusd masternode start
-./denariusd masternode debug
 ```
