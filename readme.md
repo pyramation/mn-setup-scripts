@@ -122,6 +122,7 @@ cd ~/denarius/src
 #### Trouble shooting:
 
 testnet: `tail -f ~/.denarius/testnet/debug.log`
+
 mainnet: `tail -f ~/.denarius/debug.log`
 
 if you see not a lot of action, or something like `02/02/18 02:55:31 No valid UPnP IGDs found`, then:
