@@ -66,8 +66,9 @@ def write_initd_files(daemon_name, daemon, user):
 
     cwd = os.getcwd()
     os.chdir('/etc/init.d')
-    subprocess.check_output(['chmod', '755', 'masternode'])
-    subprocess.check_output(['update-rc.d', 'masternode', 'defaults'])
     subprocess.check_output(['chmod', '755', daemon_name])
+    subprocess.check_output(['chmod', '755', 'masternode'])
+    # order matters
     subprocess.check_output(['update-rc.d', daemon_name, 'defaults'])
+    subprocess.check_output(['update-rc.d', 'masternode', 'defaults'])
     os.chdir(cwd)
